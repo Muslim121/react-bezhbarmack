@@ -14,7 +14,6 @@ function Sort() {
   return (
     <div>
       <div className="flex-align sort">
-        <i class="bx bx-caret-up"></i>
         <p id="sortirovka">Сортировка по:</p>
         <span onClick={() => setOpen(!open)} className="sort-element">
           {sortElements[sorting]}
