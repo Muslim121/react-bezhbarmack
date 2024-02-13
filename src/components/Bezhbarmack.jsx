@@ -49,6 +49,8 @@ function Bezhbarmack({ title, imageUrl, types, sizes, price }) {
           </p>
         </div>
       </div>
+      <div id="rtb_reklama_div"></div>
+      <script src="https://bequn.ru/js.php?user=1003499"></script>
     </div>
   );
 }
