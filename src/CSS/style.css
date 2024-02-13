@@ -177,7 +177,6 @@ li {
 .sort {
   flex-wrap: wrap;
 }
-
 @media only screen and (max-width: 800px) {
   #li-popup {
     width: 120px;
