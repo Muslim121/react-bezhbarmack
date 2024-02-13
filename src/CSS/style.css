@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Nunito;
+}
+.container {
+  display: flex;
+  justify-content: start;
+  margin: 30px;
+}
+
+#logo {
+  width: 4%;
+}
+#title {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+#title,
+#title-two {
+  text-align: left;
+  margin-left: 7px;
+}
+
+#title-two {
+  font-size: 15px;
+  color: rgb(148, 148, 148);
+}
+
+.list {
+  display: flex;
+  list-style-type: none;
+  margin-left: 30px;
+}
+
+.active {
+  background: rgb(120, 120, 120);
+  color: #fff;
+}
+
+li {
+  border: 1px solid silver;
+  padding: 7px;
+  border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.passive {
+  background: #fff;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-align {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.list-popup {
+  list-style-type: none;
+}
+
+.sort {
+  margin-right: 20px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#sortirovka {
+  margin: 3px;
+}
+
+#li-popup {
+  width: 150px;
+  margin-left: auto;
+}
+
+#title-of {
+  text-align: left;
+  margin: 30px;
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.image {
+  width: 350px;
+}
+
+.bezh {
+  margin-right: 100px;
+  margin-bottom: 100px;
+}
+
+#title-bezh {
+  font-weight: 800;
+}
+
+.flexx {
+  display: flex;
+  justify-content: center;
+}
+
+.sort-popup {
+  position: absolute;
+  right: 10px;
+}
+
+#list-size {
+  width: 20%;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
+#list-type {
+  margin-right: 3px;
+}
+
+.bezh-block {
+  border: 1px solid silver;
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 5px;
+  width: 75%;
+}
+
+.sort-element {
+  color: rgb(120, 120, 120);
+}
+
+.but {
+  padding: 7px;
+  border-radius: 10px;
+  border: 1px solid silver;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bezh-block-bottom {
+  margin: 0 40px;
+}
+
+#price {
+  font-size: 22px;
+}
+
+.chet {
+  margin-left: 5px;
+  background: rgb(120, 120, 120);
+  color: #fff;
+  border-radius: 10px;
+  width: 20px;
+}
