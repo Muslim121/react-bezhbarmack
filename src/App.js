@@ -11,10 +11,14 @@ function App() {
   const [items, setItems] = React.useState([]);
 
   React.useEffect(() => {
-    fetch("https://65cc8b82dd519126b83ed8b3.mockapi.io/items").then((res) => {
-      return res.json().then((json) => setItems(json)), [];
-    });
-  });
+    fetch("https://65cc8b82dd519126b83ed8b3.mockapi.io/items")
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      });
+  }, []);
 
   return (
     <div className="App">
