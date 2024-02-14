@@ -49,14 +49,6 @@ function Bezhbarmack({ title, imageUrl, types, sizes, price }) {
           </p>
         </div>
       </div>
-      <script async src="https://ad.mail.ru/static/ads-async.js"></script>
-      <ins
-        class="mrg-tag"
-        style="display:inline-block;width:950px;height:300px"
-        data-ad-client="ad-1505864"
-        data-ad-slot="1505864"
-      ></ins>
-      <script>(MRGtag = window.MRGtag || []).push({});</script>
     </div>
   );
 }
