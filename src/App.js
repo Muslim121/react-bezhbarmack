@@ -1,13 +1,21 @@
 import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Categories from "./components/Categories";
 import CSS from "./CSS/style.css";
 import Sort from "./components/Sort";
 import Bezhbarmack from "./components/Bezhbarmack";
-import items from "./assets/bezhbarmack.json";
 
 function App() {
+  const [items, setItems] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://65cc8b82dd519126b83ed8b3.mockapi.io/items").then((res) => {
+      return res.json().then((json) => setItems(json)), [];
+    });
+  });
+
   return (
     <div className="App">
       <Header />

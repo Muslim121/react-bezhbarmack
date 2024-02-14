@@ -49,18 +49,6 @@ function Bezhbarmack({ title, imageUrl, types, sizes, price }) {
           </p>
         </div>
       </div>
-      <ins
-        className="mrg-tag"
-        style={{ display: "inline-block", textDecoration: "none" }}
-        data-ad-client="ad-1399367"
-        data-ad-slot={1399367}
-      ></ins>
-      <ins
-        className="mrg-tag"
-        style={{ display: "inline-block", width: 240, height: 400 }}
-        data-ad-client="ad-1505917"
-        data-ad-slot={1505917}
-      ></ins>
     </div>
   );
 }
