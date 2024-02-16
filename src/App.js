@@ -6,9 +6,11 @@ import Categories from "./components/Categories";
 import CSS from "./CSS/style.css";
 import Sort from "./components/Sort";
 import Bezhbarmack from "./components/Bezhbarmack";
+import Skeleton from "./components/Skeleton";
 
 function App() {
   const [items, setItems] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     fetch("https://65cc8b82dd519126b83ed8b3.mockapi.io/items")
@@ -17,6 +19,7 @@ function App() {
       })
       .then((json) => {
         setItems(json);
+        setIsLoading(false);
       });
   }, []);
 
@@ -29,9 +32,9 @@ function App() {
       </div>
       <h2 id="title-of">Все бежбармаки</h2>
       <div className="flex-wrap">
-        {items.map((obj) => (
-          <Bezhbarmack key={obj.id} {...obj} />
-        ))}
+        {isLoading
+          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
+          : items.map((obj, index) => <Bezhbarmack key={obj.id} {...obj} />)}
       </div>
     </div>
   );
