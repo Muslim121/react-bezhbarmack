@@ -1,0 +1,12 @@
+.root {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.span {
+  font-size: 64px;
+}
+
+.desc {
+  font-size: 18px;
+}

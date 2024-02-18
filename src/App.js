@@ -1,41 +1,23 @@
-import logo from "./logo.svg";
 import React from "react";
-import "./App.css";
-import Header from "./components/Header";
-import Categories from "./components/Categories";
+import { Routes, Route } from "react-router-dom";
 import CSS from "./CSS/style.css";
-import Sort from "./components/Sort";
-import Bezhbarmack from "./components/Bezhbarmack";
-import Skeleton from "./components/Skeleton";
+
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
+
+import "./App.css";
 
 function App() {
-  const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    fetch("https://65cc8b82dd519126b83ed8b3.mockapi.io/items")
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
-        setIsLoading(false);
-      });
-  }, []);
-
   return (
     <div className="App">
       <Header />
-      <div className="flex">
-        <Categories />
-        <Sort />
-      </div>
-      <h2 id="title-of">Все бежбармаки</h2>
-      <div className="flex-wrap">
-        {isLoading
-          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : items.map((obj, index) => <Bezhbarmack key={obj.id} {...obj} />)}
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
