@@ -73,3 +73,6 @@
   display: flex;
   justify-content: space-between;
 }
+.but_dec {
+  text-decoration: none;
+}

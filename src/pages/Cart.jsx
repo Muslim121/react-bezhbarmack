@@ -2,7 +2,7 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
-import { Links } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import styles from "./Cart.module.css";
 
@@ -47,10 +47,12 @@ const Cart = () => {
           </h3>
         </div>
         <div className={styles.last}>
-          <div className={styles.button_back}>
-            <IoIosArrowBack />
-            <p>Вернуться назад</p>
-          </div>
+          <Link to="/" className={styles.but_dec}>
+            <div className={styles.button_back}>
+              <IoIosArrowBack />
+              <p>Вернуться назад</p>
+            </div>
+          </Link>
           <div className={styles.button_back}>
             <p>Оплатить сейчас</p>
           </div>

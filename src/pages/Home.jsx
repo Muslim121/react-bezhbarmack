@@ -18,6 +18,7 @@ const Home = () => {
         setItems(json);
         setIsLoading(false);
       });
+    window.scroll(0, 0);
   }, []);
   return (
     <div>
