@@ -1,13 +1,19 @@
 import React from "react";
 
-function Sort() {
-  const sortElements = ["популярности", "цене", "алфавиту"];
+function Sort({ value, OnClickSort }) {
+  const sortElements = [
+    { name: "популярности DESC", sort: "rating" },
+    { name: "популярности ASC", sort: "-rating" },
+    { name: "цене DESC", sort: "price" },
+    { name: "цене ASC", sort: "-price" },
+    { name: "алфавиту DESC", sort: "title" },
+    { name: "алфавиту ASC", sort: "-title" },
+  ];
 
-  const [sorting, setSorting] = React.useState(0);
   const [open, setOpen] = React.useState(false);
 
   const onSelect = (i) => {
-    setSorting(i);
+    OnClickSort(i);
     setOpen(false);
   };
 
@@ -16,21 +22,21 @@ function Sort() {
       <div className="flex-align sort">
         <p id="sortirovka">Сортировка по:</p>
         <span onClick={() => setOpen(!open)} className="sort-element">
-          {sortElements[sorting]}
+          {value.name}
         </span>
       </div>
       <div>
         {open && (
           <div className="sort-popup">
             <ul className="list-popup">
-              {sortElements.map((value, i) => (
+              {sortElements.map((obj, i) => (
                 <li
                   id="li-popup"
-                  onClick={() => onSelect(i)}
+                  onClick={() => onSelect(obj)}
                   key={i}
-                  className={sorting == i ? "active" : "passiv"}
+                  className={value.sort == obj.sort ? "active" : "passiv"}
                 >
-                  {value}
+                  {obj.name}
                 </li>
               ))}
             </ul>

@@ -6,11 +6,23 @@ import Bezhbarmack from "../components/Bezhbarmack";
 import Skeleton from "../components/Skeleton";
 
 const Home = () => {
-  const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [items, setItems] = React.useState([]);
+  const [sorting, setSorting] = React.useState({
+    name: "популярности DESC",
+    sort: "rating",
+  });
+  const [category, setCategory] = React.useState(0);
 
   React.useEffect(() => {
-    fetch("https://65cc8b82dd519126b83ed8b3.mockapi.io/items")
+    const categorie = category > 0 ? `category=${category}` : "";
+    const sortBy = sorting.sort.replace("-", "");
+    const order = sorting.sort.includes("-") ? `asc` : `desc`;
+
+    setIsLoading(true);
+    fetch(
+      `https://65cc8b82dd519126b83ed8b3.mockapi.io/items?${categorie}&sortBy=${sortBy}&order=${order}`
+    )
       .then((res) => {
         return res.json();
       })
@@ -19,12 +31,12 @@ const Home = () => {
         setIsLoading(false);
       });
     window.scroll(0, 0);
-  }, []);
+  }, [category, sorting]);
   return (
     <div>
       <div className="flex">
-        <Categories />
-        <Sort />
+        <Categories value={category} onClickCategory={(i) => setCategory(i)} />
+        <Sort value={sorting} OnClickSort={setSorting} />
       </div>
       <h2 id="title-of">Все бежбармаки</h2>
       <div className="flex-wrap">
