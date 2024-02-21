@@ -1,8 +1,11 @@
 import logo from "../assets/img/bezhbarmak-logo.jpg";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import React from "react";
 
-function Header() {
+import Search from "./Search";
+
+function Header({ searchValue, setSearchValue }) {
   return (
     <div className="flexx">
       <Link to="/" className="Link">
@@ -14,6 +17,7 @@ function Header() {
           </div>
         </div>
       </Link>
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
       <Link to="/cart" className="Link carting flex-align">
         {" "}
         <div className="cart ">

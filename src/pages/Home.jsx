@@ -5,7 +5,7 @@ import Sort from "../components/Sort";
 import Bezhbarmack from "../components/Bezhbarmack";
 import Skeleton from "../components/Skeleton";
 
-const Home = () => {
+const Home = ({ searchValue }) => {
   const [isLoading, setIsLoading] = React.useState(true);
   const [items, setItems] = React.useState([]);
   const [sorting, setSorting] = React.useState({
@@ -32,6 +32,21 @@ const Home = () => {
       });
     window.scroll(0, 0);
   }, [category, sorting]);
+
+  const bezh = items
+    .filter((obj) => {
+      if (
+        obj.title.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
+      ) {
+        return true;
+      }
+      return false;
+    })
+    .map((obj, index) => <Bezhbarmack key={obj.id} {...obj} />);
+  const skeletons = [...new Array(6)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
+
   return (
     <div>
       <div className="flex">
@@ -39,11 +54,7 @@ const Home = () => {
         <Sort value={sorting} OnClickSort={setSorting} />
       </div>
       <h2 id="title-of">Все бежбармаки</h2>
-      <div className="flex-wrap">
-        {isLoading
-          ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-          : items.map((obj, index) => <Bezhbarmack key={obj.id} {...obj} />)}
-      </div>
+      <div className="flex-wrap">{isLoading ? skeletons : bezh}</div>
     </div>
   );
 };
