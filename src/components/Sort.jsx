@@ -2,12 +2,12 @@ import React from "react";
 
 function Sort({ value, OnClickSort }) {
   const sortElements = [
-    { name: "популярности DESC", sort: "rating" },
-    { name: "популярности ASC", sort: "-rating" },
-    { name: "цене DESC", sort: "price" },
-    { name: "цене ASC", sort: "-price" },
-    { name: "алфавиту DESC", sort: "title" },
-    { name: "алфавиту ASC", sort: "-title" },
+    { name: "популярности DESC", sort: "-rating" },
+    { name: "популярности ASC", sort: "rating" },
+    { name: "цене DESC", sort: "-price" },
+    { name: "цене ASC", sort: "price" },
+    { name: "алфавиту DESC", sort: "-title" },
+    { name: "алфавиту ASC", sort: "title" },
   ];
 
   const [open, setOpen] = React.useState(false);

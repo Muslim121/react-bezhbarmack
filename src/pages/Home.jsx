@@ -17,7 +17,7 @@ const Home = () => {
   React.useEffect(() => {
     const categorie = category > 0 ? `category=${category}` : "";
     const sortBy = sorting.sort.replace("-", "");
-    const order = sorting.sort.includes("-") ? `asc` : `desc`;
+    const order = sorting.sort.includes("-") ? `desc` : `asc`;
 
     setIsLoading(true);
     fetch(
