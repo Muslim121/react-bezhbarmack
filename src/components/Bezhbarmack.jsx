@@ -3,11 +3,12 @@ import React from "react";
 function Bezhbarmack({ title, imageUrl, types, sizes, price }) {
   const [type, setType] = React.useState(0);
   const [size, setSize] = React.useState(0);
-  const [index, setIndex] = React.useState(0);
 
   const typesName = ["традиционный", "фирменный"];
 
-  const OnClickAdd = (index) => {
+  const [index, setIndex] = React.useState(0);
+
+  const OnClickIndex = () => {
     setIndex(index + 1);
   };
 
@@ -44,7 +45,7 @@ function Bezhbarmack({ title, imageUrl, types, sizes, price }) {
       <div className="bezh-block-bottom flex-align">
         <h3 id="price">от {price} ₽</h3>
         <div className="button">
-          <p className="but flex-align" onClick={() => OnClickAdd(index)}>
+          <p className="but flex-align" onClick={() => OnClickIndex()}>
             Добавить<div className="chet"> {index}</div>
           </p>
         </div>

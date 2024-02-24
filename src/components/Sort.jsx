@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setSort } from "../redux/Slices/filterSlice";
 
 function Sort({ value, OnClickSort }) {
+  const dispatch = useDispatch();
+  const sorting = useSelector((state) => state.filter.sort);
+
   const sortElements = [
     { name: "популярности DESC", sort: "-rating" },
     { name: "популярности ASC", sort: "rating" },
@@ -12,8 +17,8 @@ function Sort({ value, OnClickSort }) {
 
   const [open, setOpen] = React.useState(false);
 
-  const onSelect = (i) => {
-    OnClickSort(i);
+  const onSelect = (obj) => {
+    dispatch(setSort(obj));
     setOpen(false);
   };
 
@@ -22,7 +27,7 @@ function Sort({ value, OnClickSort }) {
       <div className="flex-align sort">
         <p id="sortirovka">Сортировка по:</p>
         <span onClick={() => setOpen(!open)} className="sort-element">
-          {value.name}
+          {sorting.name}
         </span>
       </div>
       <div>
@@ -34,7 +39,7 @@ function Sort({ value, OnClickSort }) {
                   id="li-popup"
                   onClick={() => onSelect(obj)}
                   key={i}
-                  className={value.sort == obj.sort ? "active" : "passiv"}
+                  className={sorting.sort == obj.sort ? "active" : "passiv"}
                 >
                   {obj.name}
                 </li>

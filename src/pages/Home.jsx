@@ -1,4 +1,8 @@
 import React from "react";
+import axios from "axios";
+
+import { useSelector, useDispatch } from "react-redux";
+import { setCategoryId } from "../redux/Slices/filterSlice";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -6,32 +10,34 @@ import Bezhbarmack from "../components/Bezhbarmack";
 import Skeleton from "../components/Skeleton";
 
 const Home = ({ searchValue }) => {
+  const categoryId = useSelector((state) => state.filter.categoryId);
+  const sorting = useSelector((state) => state.filter.sort.sort);
+  const dispatch = useDispatch();
+
   const [isLoading, setIsLoading] = React.useState(true);
   const [items, setItems] = React.useState([]);
-  const [sorting, setSorting] = React.useState({
-    name: "популярности DESC",
-    sort: "rating",
-  });
-  const [category, setCategory] = React.useState(0);
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   React.useEffect(() => {
-    const categorie = category > 0 ? `category=${category}` : "";
-    const sortBy = sorting.sort.replace("-", "");
-    const order = sorting.sort.includes("-") ? `desc` : `asc`;
+    const categorie = categoryId > 0 ? `category=${categoryId}` : "";
+    const sortBy = sorting.replace("-", "");
+    const order = sorting.includes("-") ? `desc` : `asc`;
 
     setIsLoading(true);
-    fetch(
-      `https://65cc8b82dd519126b83ed8b3.mockapi.io/items?${categorie}&sortBy=${sortBy}&order=${order}`
-    )
+
+    axios
+      .get(
+        `https://65cc8b82dd519126b83ed8b3.mockapi.io/items?${categorie}&sortBy=${sortBy}&order=${order}`
+      )
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
+        setItems(res.data);
         setIsLoading(false);
       });
     window.scroll(0, 0);
-  }, [category, sorting]);
+  }, [categoryId, sorting]);
 
   const bezh = items
     .filter((obj) => {
@@ -50,8 +56,8 @@ const Home = ({ searchValue }) => {
   return (
     <div>
       <div className="flex">
-        <Categories value={category} onClickCategory={(i) => setCategory(i)} />
-        <Sort value={sorting} OnClickSort={setSorting} />
+        <Categories value={categoryId} onClickCategory={onChangeCategory} />
+        <Sort />
       </div>
       <h2 id="title-of">Все бежбармаки</h2>
       <div className="flex-wrap">{isLoading ? skeletons : bezh}</div>

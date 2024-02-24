@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import { Routes, Route } from "react-router-dom";
 import CSS from "./CSS/style.css";
 
@@ -11,6 +11,7 @@ import "./App.css";
 
 function App() {
   const [searchValue, setSearchValue] = React.useState("");
+
   return (
     <div className="App">
       <Header searchValue={searchValue} setSearchValue={setSearchValue} />
